@@ -8,7 +8,7 @@ def main():
     credentials = get_credentials()
 
     # read .csv file
-    df = pd.read_csv('users.csv', sep=',')
+    df = pd.read_csv('../users.csv', sep=',')
     df.columns = [label.replace(' ', '_') for label in df.columns]
 
     # set signature per user in db
