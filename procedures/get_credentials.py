@@ -8,8 +8,7 @@ SCOPES = ['https://www.googleapis.com/auth/gmail.settings.basic',
           "https://www.googleapis.com/auth/gmail.settings.sharing"]
 
 def get_credentials():
-    ''' use oauth2 to get credentials from gmail authorization API 
-    '''
+    ''' use oauth2 to get credentials from gmail authorization API '''
     creds = None
 
     # get credentials from token.pickle

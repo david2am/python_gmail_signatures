@@ -14,20 +14,23 @@ def set_signature(creds, row):
     # calling gmail service
     gmail_endpoint = build('gmail', 'v1', credentials=creds).users().settings().sendAs()
 
-    # get primary email
-    primary_email = None
-    emails = gmail_endpoint.list(userId='me').execute()
-    
-    for alias in emails.get('sendAs'):
-        if alias.get('isPrimary'):
-            primary_email = alias
-            break
+    try:
+        # get primary email
+        primary_email = None
+        emails = gmail_endpoint.list(userId='me').execute()
+        
+        for alias in emails.get('sendAs'):
+            if alias.get('isPrimary'):
+                primary_email = alias
+                break
 
-    # set signature with primary email
-    result = gmail_endpoint.patch(
-        userId='me',
-        sendAsEmail=primary_email.get('sendAsEmail'),
-        body=body
-    ).execute()
+        # set signature with primary email
+        result = gmail_endpoint.patch(
+            userId='me',
+            sendAsEmail=primary_email.get('sendAsEmail'),
+            body=body
+        ).execute()
+    except:
+        print("An exception occurred")
 
     print('Updated signature for: %s' % result.get('displayName'))
