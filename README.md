@@ -6,7 +6,7 @@ Allows G Suite administrators to change email signatures en masse using a conven
 
 ### Setup
 
-Set the virtual environment
+Set the virtual environment `venv`,
 ```
 python -m venv venv
 ```
@@ -23,8 +23,9 @@ pip install -r requirements.txt
 
 You will also need to create,
 
-- `users.csv` user email addresses, names and job titles
+- `users.csv` with the user info
 - `credentials.json` Google [service account credentials](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) available through [Developer Console](https://console.developers.google.com/iam-admin/serviceaccounts/)
+- your own custom template, updating the `template.mustache` content
 
 ### Usage
 
