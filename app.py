@@ -4,7 +4,7 @@ from procedures.get_credentials import get_credentials
 from procedures.set_signature import set_signature
 
 def main():
-    # get credentials from gmail service
+    # get service credentials
     credentials = get_credentials()
 
     # read .csv file
@@ -12,8 +12,8 @@ def main():
     df.columns = [label.replace(' ', '_') for label in df.columns]
 
     # set signature per user in db
-    for row in df.to_dict(orient='records'):
-        set_signature(credentials, row)
+    for data in df.to_dict(orient='records'):
+        set_signature(credentials, data)
 
 
 if __name__ == '__main__':

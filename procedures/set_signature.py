@@ -1,17 +1,18 @@
 from googleapiclient.discovery import build
 from pystache import Renderer
 
-def set_signature(credentials, row):
-    ''' updates a bulk of signatures in a gmail account
+def set_signature(credentials, data):
+    ''' updates corporate gmail account signatures
         Args:
-            credentials: the credentials to acces the API
-            row: dict of values {'column_name': value,...} to map in the blueprint '''
+        credentials: API credentials
+        data: data dictionary {'column_name': current_value,...}
+    '''
 
     try:
-        # signature blueprint
-        body = {'signature': Renderer().render_path('signature.mustache', row)}
+        # mapping data into the template
+        body = {'signature': Renderer().render_path('template.mustache', data)}
 
-        # building gmail endpoint
+        # build gmail endpoint
         gmail_endpoint = build('gmail', 'v1', credentials=credentials).users().settings().sendAs()
 
         # get primary email

@@ -2,7 +2,7 @@
 
 # Bulk Signature Update
 
-Allows G Suite administrators to change email signatures en masse using a convenient mustache template.
+Python app that allows G Suite administrators to change email signatures using a mustache template.
 
 ### Setup
 
