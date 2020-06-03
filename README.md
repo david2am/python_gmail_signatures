@@ -26,6 +26,7 @@ You will also need to create,
 - `users.csv` with the user info
 - `credentials.json` Google [service account credentials](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) available through [Developer Console](https://console.developers.google.com/iam-admin/serviceaccounts/)
 - your own custom template, updating the `template.mustache` content
+- This app requires [delegated domain-wide authority](https://developers.google.com/admin-sdk/directory/v1/guides/delegation)
 
 ### Usage
 

@@ -1,7 +1,7 @@
 from googleapiclient.discovery import build
 from pystache import Renderer
 
-def set_signature(credentials, data):
+def set_signature(credentials, data, email):
     ''' updates corporate gmail account signatures
         Args:
         credentials: API credentials
@@ -15,19 +15,18 @@ def set_signature(credentials, data):
         # build gmail endpoint
         gmail_endpoint = build('gmail', 'v1', credentials=credentials).users().settings().sendAs()
 
-        # get primary email
-        primary_email = None
-        emails = gmail_endpoint.list(userId='me').execute()
-        
-        for alias in emails.get('sendAs'):
+        # get primary email alias
+        primary_alias = None
+        aliases = gmail_endpoint.list(userId=email).execute()
+        for alias in aliases.get('sendAs'):
             if alias.get('isPrimary'):
-                primary_email = alias
+                primary_alias = alias
                 break
 
-        # set signature with primary email
+        # set signature with primary email alias
         gmail_endpoint.patch(
             userId='me',
-            sendAsEmail=primary_email.get('sendAsEmail'),
+            sendAsEmail=primary_alias.get('sendAsEmail'),
             body=body
         ).execute()
 

@@ -1,7 +1,7 @@
 from __future__ import print_function
 import pandas as pd
-from procedures.get_credentials import get_credentials
-from procedures.set_signature import set_signature
+from procedures.credentials import get_credentials
+from procedures.signature import set_signature
 
 def main():
     # get service credentials
@@ -13,7 +13,7 @@ def main():
 
     # set signature per user in db
     for data in df.to_dict(orient='records'):
-        set_signature(credentials, data)
+        set_signature(credentials, data, data['Email_Address'])
 
 
 if __name__ == '__main__':
