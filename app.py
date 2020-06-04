@@ -1,4 +1,3 @@
-from __future__ import print_function
 import pandas as pd
 from procedures.credentials import get_credentials
 from procedures.signature import set_signature

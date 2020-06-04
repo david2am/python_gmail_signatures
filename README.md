@@ -10,9 +10,13 @@ Set the virtual environment `venv`,
 ```
 python -m venv venv
 ```
-Activate it
+Activate it in Windows:
 ```
 venv\Scripts\activate.bat
+```
+Activate it in Mac/Linux:
+```
+source venv/bin/activate
 ```
 
 Install the dependencies using `pip`,
@@ -24,8 +28,8 @@ pip install -r requirements.txt
 You will also need to create,
 
 - `users.csv` with the user info
-- `credentials.json` Google [service account credentials](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) available through [Developer Console](https://console.developers.google.com/iam-admin/serviceaccounts/)
-- your own custom template, updating the `template.mustache` content
+- `credentials.json` from Google [service account credentials](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) available through [Developer Console](https://console.developers.google.com/iam-admin/serviceaccounts/)
+- `signature_template.mustache` content
 - This app requires [delegated domain-wide authority](https://developers.google.com/admin-sdk/directory/v1/guides/delegation)
 
 ### Usage

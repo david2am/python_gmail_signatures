@@ -10,7 +10,7 @@ def set_signature(credentials, data, email):
 
     try:
         # mapping data into the template
-        body = {'signature': Renderer().render_path('template.mustache', data)}
+        body = {'signature': Renderer().render_path('signature_template.mustache', data)}
 
         # build gmail endpoint
         gmail_endpoint = build('gmail', 'v1', credentials=credentials).users().settings().sendAs()
