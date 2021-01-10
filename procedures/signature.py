@@ -5,8 +5,7 @@ def set_signature(credentials, data, email):
     ''' updates corporate gmail account signatures
         Args:
         credentials: API credentials
-        data: data dictionary {'column_name': current_value,...}
-    '''
+        data: data dictionary {'column_name': current_value,...} '''
 
     try:
         # mapping data into the template
@@ -25,11 +24,11 @@ def set_signature(credentials, data, email):
 
         # set signature with primary email alias
         gmail_endpoint.patch(
-            userId='me',
+            userId=primary_alias.get('sendAsEmail'),
             sendAsEmail=primary_alias.get('sendAsEmail'),
             body=body
         ).execute()
 
-        print('Signature updated')
-    except:
-        print("An exception occurred")
+        print('Signature updated for ' + primary_alias.get('sendAsEmail'))
+    except Exception as error:
+        print(error)
